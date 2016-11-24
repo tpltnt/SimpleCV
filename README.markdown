@@ -175,6 +175,8 @@ Install using clone of SimpleCV repository
 ### Mac OS X (10.6 and above)
 </a>
 
+**warning: This section still mentions PIL. SimpleCV has moved on to use Pillow. These instructions need to be updated.**
+
 **General OSX Overview**
 
 Note: We originally tried to bundle all Mac dependencies in a superpack.  This turned out to be extremely difficult with the many differences between versions of Mac OS.  Now, with Mac, you must build from source and we will try and make it as easy as possible.  Please report a bug if you have issues.
@@ -349,6 +351,8 @@ Commands (for Snow Leopard)::
 
 <a id="windows"></a>
 ### Windows 7/Vista
+**warning: This section is out of date (e.g. due to current use of Python 3 and Pillow). If you can, please check and update.**
+
 If you want a streamlined install which gives you all the dependencies, we
 recommend using the Windows Superpack, available at <http://www.simplecv.org/download/>
 
@@ -389,6 +393,8 @@ Exit the command line and reopen so it loads the updated python paths, then run:
     pip install https://github.com/sightmachine/SimpleCV/zipball/1.3
 
 ###Windows 8
+**warning: This section is out of date (e.g. due to current use of Python 3 and Pillow). If you can, please check and update.**
+
  Step 1
  ------
 
@@ -496,7 +502,7 @@ The installation instructions below should explain more on how to install.  They
 * Pygame (<http://www.pygame.org>)
 * OpenCV 2.3+ (<http://opencv.org>)
 * IPython 10+ (<http://ipython.org>)
-* PIL 1.1.7+ (<http://www.pythonware.com/products/pil/>)
+* Pillow 3.4.2+ (<https://python-pillow.org/>)
 
 <a id="optional"></a>
 ### Optional Libraries
@@ -519,7 +525,3 @@ These libraries are NOT required to run or use SimpleCV but are needed for some 
 * python-tesseract (<http://code.google.com/p/python-tesseract/>)
 * Orange (<http://orange.biolab.si>)
 * scikit-learn
-
-
-
-
