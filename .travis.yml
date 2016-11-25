@@ -16,7 +16,7 @@ before_install:
   - cd ..
   # remaining things
   - sudo apt-get install python3-numpy python3-nose python3-scipy
-  - sudo apt-get install libcv2.3 libcvaux2.3 libhighgui2.3 python-opencv libcv-dev libcvaux-dev libhighgui-dev
+  - sudo apt-get install libcv2.4 libcvaux2.4 libhighgui2.4 python-opencv libcv-dev libcvaux-dev libhighgui-dev
 
 install: "pip3 install -r requirements.txt"
 
