@@ -386,7 +386,7 @@ Once these are installed you need to add Python to your Path, open a command lin
 Exit the command line and reopen so it loads the updated python paths, then run::
 
     easy_install pyreadline
-    easy_install PIL
+    easy_install Pillow
     easy_install cython
     easy_install pip
     pip install ipython
