@@ -2,7 +2,7 @@
 # SimpleCV
 --------------------------
 
-[![Build Status](https://travis-ci.org/sightmachine/SimpleCV.png?branch=develop)](https://travis-ci.org/sightmachine/SimpleCV)
+[![Build Status](https://travis-ci.org/tpltnt/SimpleCV.png?branch=master)](https://travis-ci.org/tpltnt/SimpleCV)
 
 
 Quick Links:
