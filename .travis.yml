@@ -45,6 +45,5 @@ virtualenv:
   system_site_packages: true
 
 script:
-  - true
-# - cd SimpleCV/tests/
-# - nosetests3 -v tests.py
+  - cd SimpleCV/tests/
+  - nosetests3 -v tests.py
