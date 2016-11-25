@@ -66,7 +66,7 @@ except ImportError:
 from numpy import int32
 from numpy import uint8
 from .EXIF import *
-from pygame import gfxdraw
+import pygame
 from pickle import *
 
 # SimpleCV library includes
