@@ -76,7 +76,10 @@ except ImportError:
     try:
         import cv
     except ImportError:
-        raise ImportError("Cannot load OpenCV library which is required by SimpleCV")
+        try:
+            import cv2 as cv
+        except ImportError:
+            raise ImportError("Cannot load OpenCV library which is required by SimpleCV")
 
 
 #optional libraries
