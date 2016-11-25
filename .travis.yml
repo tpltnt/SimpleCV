@@ -20,7 +20,7 @@ before_install:
   - cd opencv-3.1.0
   - mkdir release
   - cd release
-  - cmake -D CMAKE_BUILD_TYPE=RELEASE -D BUILD_opencv_java=OFF -D BUILD_opencv_python2=OFF -D CMAKE_INSTALL_PREFIX=/usr/local ..
+  - cmake -D CMAKE_BUILD_TYPE=RELEASE -D BUILD_opencv_java=OFF -D BUILD_opencv_python2=OFF -D PYTHON_DEFAULT_EXECUTABLE=$HOME/virtualenv/python3.4_with_system_site_packages/bin/python3.4 -D PYTHON_INCLUDE_DIRS=/usr/include/python3.4m -D PYTHON_EXECUTABLE=$HOME/virtualenv/python3.4_with_system_site_packages/bin/python3.4 -D PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.4m.so -D CMAKE_INSTALL_PREFIX=/usr/local ..
   - make
   ## install OpenCV
   - sudo make install
