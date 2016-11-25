@@ -1,17 +1,32 @@
+dist: trusty
+sudo: required
+
 language: python
 python:
-  - "2.7"
+  - "3.4"
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get install python-numpy python-nose python-imaging python-scipy python-pygame
-  - sudo apt-get install libcv2.3 libcvaux2.3 libhighgui2.3 python-opencv libcv-dev libcvaux-dev libhighgui-dev
+  # pygame installation
+  ## get source
+  - sudo apt-get install mercurial
+  - hg clone https://bitbucket.org/pygame/pygame
+  ## build pygame
+  - sudo apt-get install python3-dev python3-setuptools python3-numpy libsdl-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsmpeg-dev libportmidi-dev libavformat-dev libswscale-dev libjpeg-dev libfreetype6-dev
+  - cd pygame
+  - python3 setup.py build
+  - python3 setup.py install
+  - cd ..
+  # remaining things
+  - sudo apt-get install python3-numpy python3-nose python3-scipy
+  - sudo apt-get install libcv2.4 libcvaux2.4 libhighgui2.4 python-opencv libcv-dev libcvaux-dev libhighgui-dev
 
-install: "pip install -r requirements.txt --use-mirrors"
+install: "pip3 install -r requirements.txt"
 
 virtualenv:
   system_site_packages: true
 
 script:
-- cd SimpleCV/tests/
-- nosetests -v tests.py
+  - true
+# - cd SimpleCV/tests/
+# - nosetests3 -v tests.py
