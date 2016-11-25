@@ -93,6 +93,33 @@ You should now see the simplecv logo and now have a full simplecv environment se
 
 <a id="ubuntu-1404"></a>
 ### Ubuntu 14.04
+Install OpenCV 3 from source (since some Linux distributions lack the package).
+Get the basic packages to build things:
+```
+sudo apt install build-essential cmake libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+sudo apt install python3.4-dev libpython3-dev python3-numpy
+sudo apt install libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+```
+Get the source
+```
+sudo apt-get install wget zip
+wget https://github.com/Itseez/opencv/archive/3.1.0.zip
+```
+and build it
+```
+unzip 3.1.0.zip
+cd opencv-3.1.0
+mkdir release
+cd release
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D BUILD_opencv_java=OFF -D BUILD_opencv_python2=OFF -D CMAKE_INSTALL_PREFIX=/usr/local ..
+make
+```
+
+Finall install OpenCV 3 via
+```
+sudo make install
+```
+
 Install [pygame](http://www.pygame.org/)
 
     sudo apt-get install mercurial
