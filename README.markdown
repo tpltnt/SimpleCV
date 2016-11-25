@@ -10,7 +10,7 @@ Quick Links:
  * [About](#about)
  * [Installation](#installation)
     * [Docker] (#docker)
-    * [Ubuntu](#ubuntu-1204)
+    * [Ubuntu](#ubuntu-1404)
     * [Virtual Environment](#virtualenv)
     * [Arch Linux](#arch-linux)
     * [Fedora](#fedora)
@@ -91,26 +91,38 @@ You will get a Ipython notebook inteface, start a new notebook and enter the fol
 
 You should now see the simplecv logo and now have a full simplecv environment setup to start playing around.
 
-<a id="ubuntu-1204"></a>
-### Ubuntu 12.04
+<a id="ubuntu-1404"></a>
+### Ubuntu 14.04
+Install [pygame](http://www.pygame.org/)
+
+    sudo apt-get install mercurial
+    hg clone https://bitbucket.org/pygame/pygame
+    cd pygame
+    sudo apt-get install python3-dev python3-setuptools python3-numpy libsdl-dev \
+			 libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev \
+			 libsmpeg-dev libportmidi-dev libavformat-dev libswscale-dev \
+			 libjpeg-dev libfreetype6-dev
+    python3 setup.py build
+    sudo python3 setup.py install
+
 Install with pip
 
-	sudo apt-get install ipython python-opencv python-scipy python-numpy python-pygame python-setuptools python-pip
-	sudo pip install https://github.com/sightmachine/SimpleCV/zipball/develop
+    sudo apt-get install ipython python-opencv python-scipy python-numpy python-pygame python-setuptools python-pip
+    sudo pip install https://github.com/sightmachine/SimpleCV/zipball/develop
 
 Install using clone of SimpleCV repository
 
     sudo apt-get install ipython python-opencv python-scipy python-numpy python-pygame python-setuptools git
     git clone https://github.com/sightmachine/SimpleCV.git
     cd SimpleCV/
-    sudo pip install -r requirements.txt
-    sudo python setup.py install
+    sudo pip3 install -r requirements.txt
+    sudo python3 setup.py install
 
 then just run 'simplecv' from the shell.
 
 ### Virtualenv
 
-This is how to install SimpleCV under a python virtual environment [virtualenv] (http://www.virtualenv.org).  This maybe useful in cases where you want to keep your system libraries clean and not install extra libraries.  This method has only been tested on Ubuntu 12.04, it maybe possible to port to other operating systems.
+This is how to install SimpleCV under a python virtual environment [virtualenv] (http://www.virtualenv.org).  This maybe useful in cases where you want to keep your system libraries clean and not install extra libraries.  This method has only been tested on Ubuntu 14.04, it maybe possible to port to other operating systems.
 
 Run the following commands:
 
