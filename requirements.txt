@@ -3,4 +3,4 @@ scipy
 Pillow
 ipython
 svgwrite
-pygame==1.9.1release
+pygame==1.9.2b8
