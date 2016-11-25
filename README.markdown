@@ -508,7 +508,7 @@ If for some reason the standard installation methods do not work you may have to
 ### Required Libraries
 The installation instructions below should explain more on how to install.  They can also be installed manually.
 
-* Python 2.6+ (<http://www.python.org>)
+* Python 3+ (<http://www.python.org>)
 * SciPy (<http://www.scipy.org>)
 * NumPy (<http://numpy.scipy.org>)
 * Pygame (<http://www.pygame.org>)
