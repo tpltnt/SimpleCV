@@ -70,6 +70,11 @@ import pygame
 from pickle import *
 
 # SimpleCV library includes
+#
+# this is a hack for travis to include the
+# global OpenCV python module built built before
+import sys
+sys.path.append('/usr/local/lib/python3.4/dist-packages')
 try:
     import cv2.cv as cv
 except ImportError:
