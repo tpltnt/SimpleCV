@@ -74,7 +74,7 @@ from pickle import *
 # this is a hack for travis to include the
 # global OpenCV python module built built before
 import sys
-sys.path.append('/usr/local/lib/python3.4/dist-packages')
+sys.path.append('/home/travis/virtualenv/python3.4_with_system_site_packages/lib/python3.4/site-packages')
 try:
     import cv2.cv as cv
 except ImportError:
@@ -84,7 +84,8 @@ except ImportError:
         try:
             import cv2 as cv
         except ImportError:
-            raise ImportError("Cannot load OpenCV library which is required by SimpleCV")
+            raise ImportError(str(sys.path))
+            # raise ImportError("Cannot load OpenCV library which is required by SimpleCV")
 
 
 #optional libraries
