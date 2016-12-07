@@ -75,6 +75,7 @@ from pickle import *
 # global OpenCV python module built built before
 import sys
 sys.path.append('/home/travis/virtualenv/python3.4_with_system_site_packages/lib/python3.4/site-packages')
+sys.path.append('/usr/local/lib/python3.4/site-packages')
 try:
     import cv2.cv as cv
 except ImportError:
