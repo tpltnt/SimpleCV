@@ -1,6 +1,7 @@
 Changes in 1.4
 --------------
 * removed support for cvmat in ImageClass
+* removed support for Haar (classifier) interface (i.e. dropped findHaarFeatures())
 
 
 Changes in 1.3
