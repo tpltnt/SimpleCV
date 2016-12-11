@@ -989,20 +989,8 @@ class Image:
             h = int(source[1])
             source = cv.CreateImage((w,h), cv.IPL_DEPTH_8U, 3)
             cv.Zero(source)
-        if (type(source) == cv.cvmat):
-            self._matrix = cv.CreateMat(source.rows, source.cols, cv.CV_8UC3)
-            if((source.step/source.cols)==3): #this is just a guess
-                cv.Copy(source, self._matrix, None)
-                self._colorSpace = ColorSpace.BGR
-            elif((source.step/source.cols)==1):
-                cv.Merge(source, source, source, None, self._matrix)
-                self._colorSpace = ColorSpace.GRAY 
-            else:
-                self._colorSpace = ColorSpace.UNKNOWN
-                warnings.warn("Unable to process the provided cvmat") 
 
-
-        elif (type(source) == np.ndarray):  #handle a numpy array conversion
+        if (type(source) == np.ndarray):  #handle a numpy array conversion
             if (type(source[0, 0]) == np.ndarray): #we have a 3 channel array
                 #convert to an iplimage bitmap
                 source = source.astype(np.uint8)
