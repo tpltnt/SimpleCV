@@ -235,7 +235,6 @@ class ImageSet(list):
 
     def upload(self,dest,api_key=None,api_secret=None, verbose = True):
         """
-
         **SUMMARY**
 
         Uploads all the images to imgur or flickr or dropbox. In verbose mode URL values are printed.
@@ -294,8 +293,6 @@ class ImageSet(list):
         - http://imgur.com/register/api_anon
         - http://www.flickr.com/services/api/misc.api_keys.html
         - https://www.dropbox.com/developers/start/setup#python
-
-
         """
         if dest not in set('dropbox', 'flickr', 'imgur'):
             raise ValueError("'" + dest + "' not supported as an upload target")
@@ -329,9 +326,7 @@ class ImageSet(list):
         >>> imgs = ImageSet()
         >>> imgs.download("ninjas")
         >>> imgs.show()
-
-
-       """
+        """
 
         for i in self:
             i.show()
