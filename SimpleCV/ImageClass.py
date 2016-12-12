@@ -253,7 +253,7 @@ class ImageSet(list):
         if uploading is successful
 
         - Imgur return the original image URL on success and None if it fails.
-        - Flick returns True on success, else returns False.
+        - flickr returns True on success, else returns False.
         - dropbox returns True on success.
 
 
