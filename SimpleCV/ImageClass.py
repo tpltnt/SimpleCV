@@ -297,6 +297,8 @@ class ImageSet(list):
 
 
         """
+        if dest not in set('dropbox', 'flickr', 'imgur'):
+            raise ValueError("'" + dest + "' not supported as an upload target")
         try :
             for i in self:
                 i.upload(dest,api_key,api_secret, verbose)
