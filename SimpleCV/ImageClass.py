@@ -882,7 +882,7 @@ class Image:
     #initialize the frame
     #parameters: source designation (filename)
     #todo: handle camera/capture from file cases (detect on file extension)
-    def __init__(self, source = None, camera = None, colorSpace = ColorSpace.UNKNOWN,verbose=True, sample=False, cv2image=False, webp=False):
+    def __init__(self, source=None, camera=None, colorSpace=ColorSpace.UNKNOWN, verbose=True, sample=False, cv2image=False, webp=False):
         """
         **SUMMARY**
 
@@ -947,13 +947,13 @@ class Image:
             im = StringIO(img_file.read())
             source = pil.open(im).convert("RGB")
 
-        #Check if loaded from base64 URI
+        # Check if loaded from base64 URI
         if isinstance(source, basestring) and (source.lower().startswith("data:image/png;base64,")):
             img = source[22:].decode("base64")
             im = StringIO(img)
             source = pil.open(im).convert("RGB")
 
-        #This section loads custom built-in images
+        # load custom built-in images
         if isinstance(source, basestring):
             tmpname = source.lower()
 
@@ -979,14 +979,16 @@ class Image:
                 source = imgpth
 
         if (type(source) == tuple):
+            # create an empty 3 channel RGB image
+            # with the dimensions given with the tuple
             w = int(source[0])
             h = int(source[1])
             source = cv.CreateImage((w,h), cv.IPL_DEPTH_8U, 3)
             cv.Zero(source)
 
-        if (type(source) == np.ndarray):  #handle a numpy array conversion
-            if (type(source[0, 0]) == np.ndarray): #we have a 3 channel array
-                #convert to an iplimage bitmap
+        if (type(source) == np.ndarray):  # handle a numpy array conversion
+            if (type(source[0, 0]) == np.ndarray):  # we have a 3 channel array
+                # convert to an iplimage bitmap
                 source = source.astype(np.uint8)
                 self._numpy = source
                 if not cv2image:
