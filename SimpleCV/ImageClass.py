@@ -915,7 +915,6 @@ class Image:
 
         **NOTES**
 
-        OpenCV: iplImage and cvMat types
         Python Image Library: Image type
         Filename: All opencv supported types (jpg, png, bmp, gif, etc)
         URL: The source can be a url, but must include the http://
