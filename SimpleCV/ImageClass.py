@@ -19,12 +19,13 @@ import scipy.cluster.vq as scv
 import scipy.linalg as nla  # for linear algebra / least squares
 import math
 import copy  # for deep copy
-#import scipy.stats.mode as spsmode
+
 
 try:
     basestring
-except NameError: # python3
+except NameError:  # Python 3
     basestring = (str, bytes)
+
 
 class ColorSpace:
     """
@@ -42,8 +43,9 @@ class ColorSpace:
     RGB = 3
     HLS = 4
     HSV = 5
-    XYZ  = 6
+    XYZ = 6
     YCrCb = 7
+
 
 class ImageSet(list):
     """
@@ -87,17 +89,17 @@ class ImageSet(list):
     image, and on load/save pickle that data or write it to a CSV file.
 
     """
-
     filelist = None
-    def __init__(self, directory = None):
+
+    def __init__(self, directory=None):
         if not directory:
             return
 
-        if isinstance(directory,list):
+        if isinstance(directory, list):
             if isinstance(directory[0], Image):
-                super(ImageSet,self).__init__(directory)
+                super(ImageSet, self).__init__(directory)
             elif isinstance(directory[0], str) or isinstance(directory[0], unicode):
-                super(ImageSet,self).__init__(map(Image, directory))
+                super(ImageSet, self).__init__(map(Image, directory))
 
         elif directory.lower() == 'samples' or directory.lower() == 'sample':
             pth = LAUNCH_PATH
@@ -156,7 +158,6 @@ class ImageSet(list):
 
             return
 
-
         INVALID_SIZE_MSG = """I don't understand what size images you want.
   Valid options: 'thumb', 'small', 'medium', 'large'
    or a tuple of exact dimensions i.e. (640,480)."""
@@ -189,7 +190,6 @@ class ImageSet(list):
         add_set = ImageSet()
         candidate_count = 0
 
-
         while len(add_set) < number:
             opener = urllib2.build_opener()
             opener.addheaders = [('User-agent', 'Mozilla/5.0')]
@@ -210,10 +210,9 @@ class ImageSet(list):
             # Gets the direct image URLs
             else:
                 for link_tag in soup.findAll('a', {'href': re.compile('imgurl=')}):
-                    dirty_url = link_tag.get('href') # URL to an image as given by Google Images
-                    dl_url = str(re.search(imgurl_re, dirty_url).group()) # The direct URL to the image
+                    dirty_url = link_tag.get('href')  # URL to an image as given by Google Images
+                    dl_url = str(re.search(imgurl_re, dirty_url).group())  # the direct URL to the image
                     img_urls.append(dl_url)
-
 
             for dl_url in img_urls:
                 try:
@@ -224,7 +223,7 @@ class ImageSet(list):
                         add_set.append(add_img)
 
                 except:
-                    #do nothing
+                    # do nothing
                     None
 
                 if len(add_set) >= number:
@@ -232,8 +231,7 @@ class ImageSet(list):
 
         self.extend(add_set)
 
-
-    def upload(self,dest,api_key=None,api_secret=None, verbose = True):
+    def upload(self, dest, api_key=None, api_secret=None, verbose=True):
         """
         **SUMMARY**
 
@@ -296,15 +294,15 @@ class ImageSet(list):
         """
         if dest not in set('dropbox', 'flickr', 'imgur'):
             raise ValueError("'" + dest + "' not supported as an upload target")
-        try :
+        try:
             for i in self:
-                i.upload(dest,api_key,api_secret, verbose)
+                i.upload(dest, api_key, api_secret, verbose)
             return True
 
-        except :
+        except:
             return False
 
-    def show(self, showtime = 0.25):
+    def show(self, showtime=0.25):
         """
         **SUMMARY**
 
@@ -340,7 +338,7 @@ class ImageSet(list):
         bb += "NETSCAPE2.0"
         bb += "\x03\x01"
         if loops == 0:
-            loops = 2**16-1
+            loops = 2**16 - 1
         bb += int_to_bin(loops)
         bb += '\x00'  # end
         return bb
@@ -350,7 +348,7 @@ class ImageSet(list):
         each image. Specifies transparancy and duration. """
         bb = '\x21\xF9\x04'
         bb += '\x08'  # no transparency
-        bb += int_to_bin( int(duration*100) ) # in 100th of seconds
+        bb += int_to_bin( int(duration*100) )  # in 100th of seconds
         bb += '\x00'  # no transparent color
         bb += '\x00'  # end
         return bb
@@ -369,12 +367,12 @@ class ImageSet(list):
         converted = []
 
         for img in self:
-            if not isinstance(img,pil.Image):
+            if not isinstance(img, pil.Image):
                 pil_img = img.getPIL()
             else:
                 pil_img = img
 
-            converted.append((pil_img.convert('P',dither=dither), img._get_header_anim()))
+            converted.append((pil_img.convert('P', dither=dither), img._get_header_anim()))
 
         try:
             for img, header_anim in converted:
@@ -413,13 +411,13 @@ class ImageSet(list):
                 previous = img.copy()
                 frames = frames + 1
 
-            fp.write(";") # end gif
+            fp.write(";")  # end gif
 
         finally:
             fp.close()
             return frames
 
-    def save(self, destination=None, dt=0.2, verbose = False, displaytype=None):
+    def save(self, destination=None, dt=0.2, verbose=False, displaytype=None):
         """
 
         **SUMMARY**
@@ -458,7 +456,7 @@ class ImageSet(list):
         >>> imgs.save(destination="ninjas.gif", verbose=True)
 
         """
-        if displaytype=='notebook':
+        if displaytype == 'notebook':
             try:
                 from IPython.core.display import Image as IPImage
             except ImportError:
@@ -531,7 +529,7 @@ class ImageSet(list):
         try:
             while True:
                 pil_images.append(pil_img.copy())
-                pil_img.seek(pil_img.tell()+1)
+                pil_img.seek(pil_img.tell() + 1)
 
         except EOFError:
             pass
@@ -543,7 +541,7 @@ class ImageSet(list):
 
         return loaded
 
-    def load(self, directory = None, extension = None, sort_by=None):
+    def load(self, directory=None, extension=None, sort_by=None):
         """
         **SUMMARY**
 
